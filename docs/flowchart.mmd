@@ -1,0 +1,19 @@
+flowchart TD
+    A([Người dùng nhập số tiền, chọn Từ / Sang, bấm Đổi]) --> B["main.js: showLoading('Đang tải...')"]
+    B --> C["api.js: fetch /api/convert?amount=&from=&to="]
+    C --> D["Express: rateRoutes → rateController.convertAmount"]
+    D --> E{"amount hợp lệ?<br/>from, to có trong CURRENCIES?"}
+    E -- Không --> F["res.status(400).json({ error })"]
+    E -- Có --> G{"rateModel: cache còn hạn<br/>(dưới 1 giờ)?"}
+    G -- Có --> J["Tính: amount / rates[from] * rates[to]"]
+    G -- Không --> H["fetch open.er-api.com/v6/latest/USD"]
+    H --> I{"response.ok và<br/>result === 'success'?"}
+    I -- Không / mất mạng --> K["throw Error → controller catch<br/>res.status(502).json({ error })"]
+    I -- Có --> L["Lưu cache + thời điểm cập nhật"] --> J
+    J --> M["res.json({ amount, from, to, result })"]
+    F --> N{"api.js: response.ok?"}
+    K --> N
+    M --> N
+    N -- Không --> O["throw new Error(data.error)<br/>main.js catch → ui.showError"]
+    N -- Có --> P["ui.showResult(kết quả)"]
+    P --> Q["storage.addHistory → localStorage<br/>ui.renderHistory"]

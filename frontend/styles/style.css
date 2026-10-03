@@ -1,0 +1,432 @@
+/* Màu, bo góc, khoảng cách lấy từ DESIGN.md (Wise) ở thư mục gốc project */
+:root {
+    --primary: #9fe870;
+    --primary-active: #cdffad;
+    --primary-pale: #e2f6d5;
+    --ink: #0e0f0c;
+    --body: #454745;
+    --mute: #868685;
+    --canvas: #ffffff;
+    --canvas-soft: #e8ebe6;
+    --canvas-soft-hover: #dde1da;
+    --positive-deep: #054d28;
+    --negative: #d03238;
+
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-xl: 24px;
+    --radius-pill: 9999px;
+
+    --space-xs: 4px;
+    --space-sm: 8px;
+    --space-md: 12px;
+    --space-lg: 16px;
+    --space-xl: 24px;
+    --space-2xl: 32px;
+    --space-3xl: 48px;
+
+    --font: "Inter", system-ui, -apple-system, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: var(--font);
+    font-feature-settings: "calt";
+    font-size: 16px;
+    line-height: 24px;
+    color: var(--ink);
+    background: var(--canvas-soft);
+}
+
+h1,
+h2,
+p {
+    margin: 0;
+}
+
+button,
+input,
+select {
+    font: inherit;
+    color: inherit;
+}
+
+:focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 2px;
+}
+
+/* ---------- Thanh trên cùng ---------- */
+.nav-bar {
+    background: var(--canvas);
+    padding: var(--space-md) var(--space-xl);
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 900;
+    letter-spacing: -0.5px;
+}
+
+.logo-accent {
+    margin-left: 2px;
+    padding: 0 6px;
+    background: var(--primary);
+    border-radius: var(--radius-sm);
+}
+
+/* ---------- Bố cục ---------- */
+.container {
+    flex: 1;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--space-xl);
+}
+
+.hero {
+    display: grid;
+    gap: var(--space-2xl);
+    padding: var(--space-3xl) 0;
+    align-items: center;
+}
+
+.hero h1 {
+    font-size: 40px;
+    line-height: 1;
+    font-weight: 900;
+    letter-spacing: -1px;
+}
+
+.lead {
+    margin-top: var(--space-lg);
+    font-size: 20px;
+    line-height: 30px;
+    color: var(--body);
+}
+
+.content {
+    display: grid;
+    gap: var(--space-xl);
+    padding-bottom: var(--space-3xl);
+}
+
+@media (min-width: 768px) {
+    .content {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .card-wide {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (min-width: 1024px) {
+    .hero {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .hero h1 {
+        font-size: 64px;
+        line-height: 54.4px;
+    }
+}
+
+/* ---------- Thẻ ---------- */
+.card,
+.converter-card {
+    background: var(--canvas);
+    border-radius: var(--radius-xl);
+    padding: var(--space-xl);
+}
+
+.converter-card {
+    border: 1px solid var(--ink);
+}
+
+.card h2 {
+    font-size: 24px;
+    line-height: 31.2px;
+    font-weight: 600;
+    letter-spacing: -0.48px;
+    margin-bottom: var(--space-lg);
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-md);
+    margin-bottom: var(--space-lg);
+}
+
+.card-header h2 {
+    margin-bottom: 0;
+}
+
+/* ---------- Form ---------- */
+.field-label {
+    display: block;
+    margin-bottom: var(--space-xs);
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 600;
+}
+
+.text-input {
+    width: 100%;
+    padding: var(--space-md) var(--space-lg);
+    background: var(--canvas);
+    border: 1px solid var(--ink);
+    border-radius: var(--radius-md);
+}
+
+#amount {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+select.text-input {
+    appearance: none;
+    padding-right: 40px;
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%230e0f0c' stroke-width='2' fill='none'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+}
+
+.currency-row {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: end;
+    gap: var(--space-md);
+    margin-top: var(--space-lg);
+}
+
+.result {
+    margin-top: var(--space-xl);
+    min-height: 38px;
+    font-size: 32px;
+    line-height: 38px;
+    font-weight: 900;
+    letter-spacing: -0.96px;
+    overflow-wrap: anywhere;
+}
+
+.status {
+    min-height: 20px;
+    font-size: 14px;
+    line-height: 20px;
+    color: var(--mute);
+}
+
+.status--error {
+    color: var(--negative);
+    font-weight: 600;
+}
+
+.caption {
+    margin-top: var(--space-md);
+    font-size: 12px;
+    line-height: 16px;
+    color: var(--mute);
+}
+
+/* ---------- Nút ---------- */
+.actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+    margin-top: var(--space-lg);
+}
+
+.btn {
+    padding: var(--space-md) var(--space-xl);
+    border: none;
+    border-radius: var(--radius-xl);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.15s;
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: var(--ink);
+}
+
+.btn-primary:hover {
+    background: var(--primary-active);
+}
+
+.btn-secondary {
+    background: var(--canvas-soft);
+}
+
+.btn-secondary:hover {
+    background: var(--canvas-soft-hover);
+}
+
+.btn-tertiary {
+    background: var(--canvas);
+    border: 1px solid var(--ink);
+}
+
+.btn-tertiary:hover {
+    background: var(--canvas-soft);
+}
+
+.btn-sm {
+    padding: var(--space-xs) var(--space-lg);
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.btn-icon {
+    width: 48px;
+    height: 48px;
+    border: 1px solid var(--ink);
+    border-radius: var(--radius-pill);
+    background: var(--canvas);
+    font-size: 20px;
+    cursor: pointer;
+    transition: background-color 0.15s;
+}
+
+.btn-icon:hover {
+    background: var(--primary-pale);
+}
+
+/* ---------- Bảng quy đổi ---------- */
+.rate-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.rate-table th {
+    padding: var(--space-md) var(--space-lg);
+    background: var(--canvas-soft);
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-align: left;
+}
+
+.rate-table th:first-child {
+    border-radius: var(--radius-md) 0 0 var(--radius-md);
+}
+
+.rate-table th:last-child {
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    text-align: right;
+}
+
+.rate-table td {
+    padding: var(--space-md) var(--space-lg);
+    border-bottom: 1px solid var(--canvas-soft);
+}
+
+.rate-table td:last-child {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+}
+
+.rate-table td:first-child {
+    font-weight: 600;
+}
+
+.rate-table td.table-message {
+    text-align: center;
+    font-weight: 400;
+    color: var(--mute);
+}
+
+.rate-table td.table-message--error {
+    color: var(--negative);
+    font-weight: 600;
+}
+
+/* ---------- Danh sách yêu thích / lịch sử ---------- */
+.list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.list li {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-md) 0;
+    border-bottom: 1px solid var(--canvas-soft);
+}
+
+.list li:last-child {
+    border-bottom: none;
+}
+
+.list .list-empty {
+    color: var(--mute);
+}
+
+.list-time {
+    margin-left: auto;
+    font-size: 12px;
+    color: var(--mute);
+    white-space: nowrap;
+}
+
+.list-pair {
+    font-weight: 600;
+}
+
+.list button {
+    padding: var(--space-xs) var(--space-md);
+    border-radius: var(--radius-pill);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.list button[data-action="use"] {
+    margin-left: auto;
+    border: none;
+    background: var(--primary-pale);
+    color: var(--positive-deep);
+}
+
+.list button[data-action="use"]:hover {
+    background: var(--primary);
+}
+
+.list button[data-action="remove"] {
+    border: 1px solid var(--negative);
+    background: var(--canvas);
+    color: var(--negative);
+}
+
+.list button[data-action="remove"]:hover {
+    background: #fbe9ea;
+}
+
+/* ---------- Chân trang ---------- */
+.footer {
+    padding: var(--space-3xl) var(--space-xl);
+    background: var(--ink);
+    color: var(--canvas-soft);
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+}
