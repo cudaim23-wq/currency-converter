@@ -5,7 +5,7 @@ Assignment môn **WEB2064, Lập trình JavaScript nâng cao**, đề **Cơ bả
 Ứng dụng cho phép quy đổi giữa 10 loại tiền tệ theo tỷ giá thật, xem bảng tỷ giá, lưu các cặp tiền yêu thích và xem lại lịch sử quy đổi.
 
 - Link deploy: _(điền link Render sau khi deploy)_
-- Link GitHub: _(điền link repo)_
+- Link GitHub: https://github.com/cudaim23-wq/currency-converter
 
 ## 1. Tính năng
 
